@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+body {
+    background: linear-gradient(to bottom, #14919B, #0B6477, #213A57);
+    font-family: 'Roboto', sans-serif;
+    padding: 20px;
+    margin: 0 ;
+}
+    
+
+.br {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 30px;
+    border-radius: 45px;
+    background-color: rgba(0, 0, 0, 0.7); 
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+
+}
+
+.br h1 {
+    font-size: 3.5rem;
+    color: #2b4f88;
+}
+
+.br p {
+    color: #bbe31d;
+    font-size: 2.25rem;
+    margin-top: 25px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 60px;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 45px;
+}
+
+.itb {
+    position: relative;
+    perspective: 1000px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.itb input[type="checkbox"] {
+    display: none;
+}
+
+.box-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #111;
+    color: #fff;
+    padding: 20px;
+    height: 250px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.box-header h2 {
+    margin-bottom: 10px;
+}
+
+.box-header img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.box-header:hover {
+    transform: scale(1.05);
+}
+
+.box-content {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+}
+
+.itb input[type="checkbox"]:checked + label + .box-content {
+    max-height: 300px;
+    opacity: 1;
+    padding: 20px;
+}
+
+/* Final Showdown Sthyling */
+
+.final-showdown {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 15px;
+    animation: slideIn 1s ease-out;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.final-showdown.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.showdown-box {
+    background: rgba(255, 255, 255, 0.2); /* Glassmorphism effect */
+    backdrop-filter: blur(10px); 
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 15px;
+    color: white;
+    text-align: center;
+    width: 80%;
+    position: relative;
+    animation: rotate-border 3s linear infinite; /* Apply the constant rotation animation */
+}
+
+.showdown-box h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.showdown-box p {
+    color: #fff;
+    font-size: 1.75rem;
+    line-height: 1.5;
+}
+
+/* Rotating border effect */
+@keyframes rotate-border {
+    0% {
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    }
+    25% {
+        border-color: rgba(0, 212, 255, 0.5);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+    }
+    50% {
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    }
+    75% {
+        border-color: rgba(0, 212, 255, 0.5);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+    }
+    100% {
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Mobile Responsiveness for Showdown */
+@media (max-width: 768px) {
+    .showdown-box {
+        padding: 20px;
+    }
+
+    .showdown-box h1 {
+        font-size: 1.5rem;
+    }
+
+    .showdown-box p {
+        font-size: 0.9rem;
+    }
+}
