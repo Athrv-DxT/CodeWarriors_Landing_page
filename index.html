@@ -2,37 +2,31 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title> Code Warriors </title>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Patrick+Hand&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Warriors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="nav-bar">
         <div class="nav-container">
             <p class="CW"> Code Warriors </p>
             <ul>
-
-				<li><a href="instructions.html"><button id="ib"> Instructions </button></a> </li>
-				<li><a href="rounds.html"><button id="tb"> Battle Rounds </button></a> </li>
-                <li><a href="#"><button id="cb"> Contact </button></a> </li>
-				
-			</ul>
+                <li><a href="instructions.html"><button id="instructions-btn" class="nav-button">Instructions</button> </a></li>
+                <li><a href="rounds.html"><button id="rounds-btn" class="nav-button">Battle Rounds</button></a></li>
+            </ul>
         </div>
     </div>
-    
-    <main>
 
+    <main>
         <section id="home">
             <div class="welcome">
                 <div class="home-content">
-                    <h1> ⚔️ CODE WARRIORS ⚔️ </h1>
-                    <p> Where Algorithms Meet Adrenaline</p>
+                    <h1>⚔️ CODE WARRIORS ⚔️</h1>
+                    <p>Where Algorithms Meet Adrenaline</p>
                 </div>
             </div>
         </section>
@@ -46,12 +40,17 @@
                 </p>
             </div>
         </section>
-        
+
+        <div class="logo-scroller">
+            <div class="logo-track" id="logoTrack">
+                <!-- Logos in this language scroller will be dynamically inserted by JavaScript -->
+            </div>
+        </div>
+
+
     </main>
-    <script src="./script.js"></script>
 
-
-
-
-
+    <script src="script.js"></script>
 </body>
+
+</html>

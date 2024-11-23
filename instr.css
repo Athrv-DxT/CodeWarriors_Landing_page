@@ -62,6 +62,59 @@ hr {
     font-weight: bold;
 }
 
+/* Keyframes for animations for the three page elements*/
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Initial states for the  animations */
+h1, .instr p, hr, .instr-list {
+    opacity: 0; 
+}
+
+/* Transition styles */
+
+h1.animate, .instr p.animate {
+    animation: slideIn 1s ease-out forwards;
+}
+
+hr.animate {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.instr-list.animate {
+    animation: zoomIn 1s ease-out forwards;
+}
+
+
 @media (max-width: 768px) {
     .details-container {
         padding: 0 5%;

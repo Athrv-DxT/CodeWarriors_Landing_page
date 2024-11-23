@@ -23,17 +23,22 @@ body {
 .nav-bar {
     color: #f6f6f600;
     position: sticky;
-    top: 0;
-    background-color: rgba(0, 16, 39, 0.792); /* Semi-transparent */
+    top: -100px; /* Start position (off-screen) */
+    background-color: rgb(0, 55, 20);
     backdrop-filter: blur(10px); /* Glass effect */
     z-index: 1000;
     padding: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for navbar */
+    transition: top 1s ease-out; /* Smooth transition for slide-in effect */
+}
+
+.nav-bar.visible {
+    top: 0; /* Final position (on-screen) */
 }
 
 .nav-container {
     display: flex;
-    height: 100px;
+    height: 75px;
     align-items: center;
     justify-content: space-between;
     width: 80%;
@@ -43,9 +48,27 @@ body {
 
 .CW {
     font-size: 3em;
-    font-family: 'Roboto', sans-serif;
-    transition: 0.30s;
+    font-family: 'Times New Roman', sans-serif;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Pop-up effect */
     color: antiquewhite;
+    opacity: 0; /* Hidden initially */
+    transform: translateY(20px); 
+    text-shadow: 0 0 15px rgba(0, 234, 255, 0.8), 0 0 30px rgba(255, 0, 225, 0.6);
+    letter-spacing: 4px;
+    animation: glow 1.5s infinite alternate;
+}
+@keyframes glow {
+    from {
+        text-shadow: 0 0 15px rgba(0, 234, 255, 0.8), 0 0 30px rgba(255, 0, 225, 0.6);
+    }
+    to {
+        text-shadow: 0 0 25px rgba(0, 234, 255, 1), 0 0 45px rgba(255, 0, 225, 0.8);
+    }
+}
+
+.CW.visible {
+    opacity: 1;
+    transform: translateY(0); /* Final position */
 }
 
 ul {
@@ -58,7 +81,7 @@ li {
     padding: 12px;
 }
 
-#ib, #tb, #cb {
+#instructions-btn, #rounds-btn{
     background-color: #04681c;
     color: white;
     padding: 0.5rem 1rem;
@@ -80,7 +103,7 @@ li {
     transition: scale 0.5s;
 }
 
-#ib:hover, #tb:hover, #cb:hover {
+#instructions-btn:hover, #rounds-btn:hover {
     animation: shimmer 1s forwards;
     scale: 1.1;
 }
@@ -123,6 +146,29 @@ section {
     z-index: 0;
 }
 
+
+/* Home Section with Background Blur Reveal */
+#home {
+    background-color: black;
+    background-image: url('images/m_backdrop.jpeg'), 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 1) 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    filter: blur(10px); /* Start with a blurred background */
+    transition: filter 1s ease; /* Smooth transition for background blur effect */
+}
+
+#home.visible {
+    filter: blur(0); /* Final unblurred background */
+}
+
 /* Dark overlay effect */
 #home::before {
     content: '';
@@ -147,8 +193,6 @@ section {
 }
 
 
-
-
 /* Content inside the Home Section */
 .welcome {
     position: relative;
@@ -167,6 +211,33 @@ h1 {
 p {
     font-size: 1.5rem;
     font-style: italic;
+}
+
+.welcome h1, .welcome p {
+    opacity: 0; /* Initially hidden */
+    transform: translateY(30px); /* Start position (slightly below) */
+    transition: opacity 1s ease, transform 1s ease; /* Smooth fade and movement */
+}
+
+.welcome.visible h1, .welcome.visible p {
+    opacity: 1; /* Final visible state */
+    transform: translateY(0); /* Final position */
+}
+
+.welcome {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(30px); /* Start position (slightly below) */
+    transition: opacity 1s ease, transform 1s ease; /* Smooth fade and movement */
+}
+
+.welcome.visible {
+    opacity: 1;
+    transform: translateY(0); /* Final position */
 }
 
 /* Mobile Responsiveness */
@@ -306,3 +377,38 @@ p {
         padding: 20px;
     }
 }
+
+/* Container for the scroller */
+.logo-scroller {
+    width: 100%; 
+    overflow: hidden; 
+    position: relative;
+    background-color: #f4f4f4; 
+    padding: 10px 0;
+}
+
+/* Track for the logos */
+.logo-track {
+    display: flex;
+    gap: 40px; /* Space between logos */
+    animation: scroll-left 10s linear infinite; /* Continuous scroll animation */
+}
+
+/* Logos */
+.logo-track img {
+    height: 50px; 
+    object-fit: contain; /* Keep aspect ratio */
+    flex-shrink: 0; 
+}
+
+/* Animation for scrolling */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0); /* Start from the beginning */
+    }
+    100% {
+        transform: translateX(-100%); /* Move all logos out of view */
+    }
+}
+
+
